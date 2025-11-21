@@ -18,19 +18,28 @@ class RegistrationPage extends Page {
         return super.open('auth/register');
     }
 
-    async fillForm({ firstName, lastName, birthDate, street, postalCode, city, state, country, phoneNumber, email, password }) {
+    async personalInfo({ firstName, lastName, birthDate, phoneNumber, email, password }) {
         await this.firstNameInput.setValue(firstName);
         await this.lastNameInput.setValue(lastName);
         await this.dobInput.setValue(birthDate);
+        await this.phoneInput.setValue(phoneNumber);
+        await this.emailInput.setValue(email);
+        await this.passwordInput.setValue(password);
+    }
+
+    async address({ street, postalCode, city, state, country }) {
         await this.streetInput.setValue(street);
         await this.postalCodeInput.setValue(postalCode);
         await this.cityInput.setValue(city);
         await this.stateInput.setValue(state);
         await this.countrySelect.selectByVisibleText(country);
-        await this.phoneInput.setValue(phoneNumber);
-        await this.emailInput.setValue(email);
-        await this.passwordInput.setValue(password);
     }
+
+    async fillForm(data) {
+        await this.personalInfo(data);
+        await this.address(data);
+    }
+
 
     async submit() {
         await this.submitButton.click();

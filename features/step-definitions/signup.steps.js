@@ -7,7 +7,7 @@ Given('the user is on the registration page', async () => {
 });
 
 When('the user enters valid registration information', async () => {
-    await RegistrationPage.fillForm({
+    const userData = {
         firstName: "Ezgi",
         lastName: "Oztuna",
         birthDate: "1996-03-28",
@@ -18,8 +18,9 @@ When('the user enters valid registration information', async () => {
         country: "Turkey",
         phoneNumber: "5555555555",
         email: `ezgi_${Date.now()}@mail.com`,
-        password: "P@ssword123*"
-    });
+        password: "21112025*Epam"
+    }
+    await RegistrationPage.fillForm(userData);
 });
 
 When('clicks on the Register button', async () => {
