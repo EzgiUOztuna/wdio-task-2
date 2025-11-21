@@ -28,7 +28,5 @@ When('clicks on the Register button', async () => {
 });
 
 Then('the user should be redirected to the login page', async () => {
-    console.log('Current URL after submit:', await browser.getUrl());
-
     await expect(browser).toHaveUrl('https://practicesoftwaretesting.com/auth/login');
 })
