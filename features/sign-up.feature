@@ -1,4 +1,4 @@
-Feature: User Registration
+Feature: User Successful Registration
 
   Scenario: User successfully registers with valid details
     Given the user is on the registration page
