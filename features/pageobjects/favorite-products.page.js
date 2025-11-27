@@ -16,23 +16,6 @@ class FavoriteProducts extends Page {
         await expect(this.errorToast).toBeDisplayed();
         await expect(this.errorToast).toHaveText(expectedMessage);
     }
-
-    async debugToast() {
-        const toast = await this.errorToast;
-
-        // DOM'a girene kadar bekle
-        await toast.waitForExist({ timeout: 5000 });
-
-        // Class bilgisi
-        const className = await toast.getAttribute("class");
-        console.log("TOAST CLASS:", className);
-
-        // Text bilgisi
-        const text = await toast.getText();
-        console.log("TOAST TEXT:", text);
-    }
-
-
 }
 
 module.exports = new FavoriteProducts();

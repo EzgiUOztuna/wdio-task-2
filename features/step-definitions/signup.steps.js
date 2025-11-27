@@ -1,6 +1,6 @@
 const { Given, When, Then } = require("@wdio/cucumber-framework");
 const { expect, browser } = require("@wdio/globals");
-const RegistrationPage = require('../pageobjects/registration.page');
+const RegistrationPage = require('../pageobjects/signup.page');
 
 Given('the user is on the registration page', async () => {
     await RegistrationPage.open();
