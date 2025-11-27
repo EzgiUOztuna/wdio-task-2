@@ -21,36 +21,35 @@ class UserProfile extends Page {
         await this.passwordInput.setValue(password);
         await this.submitButton.click();
     }
-    /*
-        async profilePage() {
-            await this.profileButton.waitForDisplayed();
-            await this.profileButton.waitForClickable();
-            await this.profileButton.click()
-        }
-    
-        async navigateProfilePage() {
-            await browser.url("https://practicesoftwaretesting.com/account/profile")
-        }
-    
-        async change({ phoneNumber, street, postalCode, city, state, country }) {
-            await this.phoneInput.waitForDisplayed();
-            await this.phoneInput.setValue(phoneNumber);
-            await this.streetInput.setValue(street);
-            await this.postalCodeInput.setValue(postalCode);
-            await this.cityInput.setValue(city);
-            await this.stateInput.setValue(state);
-            await this.countrySelect.setValue(country);
-        }
-    
-        async updateProfileSubmit() {
-            await this.updateProfile.click();
-        }
-    
-        async alertMessage() {
-            await expect(this.alertSuccessMessage).toBeDisplayed();
-            await expect(this.alertSuccessMessage).toHaveText('Profiliniz başarıyla güncellendi!');
-        }
-    */
+
+    async profilePage() {
+        await this.profileButton.waitForDisplayed();
+        await this.profileButton.waitForClickable();
+        await this.profileButton.click()
+    }
+
+    async navigateProfilePage() {
+        await browser.url("https://practicesoftwaretesting.com/account/profile")
+    }
+
+    async change({ phoneNumber, street, postalCode, city, state, country }) {
+        await this.phoneInput.waitForDisplayed();
+        await this.phoneInput.setValue(phoneNumber);
+        await this.streetInput.setValue(street);
+        await this.postalCodeInput.setValue(postalCode);
+        await this.cityInput.setValue(city);
+        await this.stateInput.setValue(state);
+        await this.countrySelect.setValue(country);
+    }
+
+    async updateProfileSubmit() {
+        await this.updateProfile.click();
+    }
+
+    async alertMessage() {
+        await expect(this.alertSuccessMessage).toBeDisplayed();
+        await expect(this.alertSuccessMessage).toHaveText('Profiliniz başarıyla güncellendi!');
+    }
 }
 
 module.exports = new UserProfile();

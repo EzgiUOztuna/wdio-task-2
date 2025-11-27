@@ -9,7 +9,6 @@ Given("the user is logged into their account successfully", async () => {
     });
 });
 
-/*
 When("the user clicks on the 'Profile' button", async () => {
     await UserProfile.profilePage();
 });
@@ -40,6 +39,4 @@ Then("a confirmation message should appear", async () => {
 
 Then("the updated information should be visible on the profile page", async () => {
     await expect(browser).toHaveUrl('https://practicesoftwaretesting.com/account/profile');
-})
-*/
-
+});
