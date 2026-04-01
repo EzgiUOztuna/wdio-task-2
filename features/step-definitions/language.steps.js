@@ -3,19 +3,25 @@ const Language = require("../pageobjects/language.page");
 const Login = require("../pageobjects/login.page");
 const productDetailsPage = require("../pageobjects/product-details.page");
 
-Given("the user is on the home page", async () => {
+console.log("===== LANGUAGE STEPS LOADED =====");
+
+Given("user is on home page", async () => {
+    console.log("STEP: user is on home page");
     await Login.login("customer2@practicesoftwaretesting.com", "welcome01");
     await productDetailsPage.goToHomePage();
 });
 
-When("the user clicks on the world icon or 'EN' word", async () => {
+When("user clicks language selector", async () => {
+    console.log("STEP: user clicks language selector");
     await Language.openDropdown();
 });
 
-When("selects 'TR' from the language dropdown", async () => {
+When("user selects Turkish language", async () => {
+    console.log("STEP: user selects Turkish language");
     await Language.selectTr();
 });
 
-Then("entire page should be displayed in Turkish", async () => {
+Then("user verifies Turkish language", async () => {
+    console.log("STEP: user verifies Turkish language");
     await Language.verifyTurkish();
 });
