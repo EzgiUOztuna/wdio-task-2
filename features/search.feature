@@ -1,4 +1,5 @@
 Feature: Find Product for Exact Name
+
 Scenario: User searches for a product by its exact name
   Given the user is on the home page
   When the user clicks on the Search bar
