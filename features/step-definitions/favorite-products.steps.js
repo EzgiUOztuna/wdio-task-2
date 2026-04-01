@@ -10,7 +10,7 @@ Given("the user is on the product details page", async () => {
     await productDetailsPage.goToHomePage();
     await productDetailsPage.clickProduct();
 });
-/*
+
 When("the user clicks on the 'Add to favorites' button", async () => {
     await FavoriteProducts.clickFavoriteButton();
 });
@@ -18,4 +18,4 @@ When("the user clicks on the 'Add to favorites' button", async () => {
 Then("a success message should be displayed", async () => {
     await FavoriteProducts.successMessage('Product added to your favorites list.');
     await FavoriteProducts.removeFavorites();
-});*/
+});
