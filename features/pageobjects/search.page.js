@@ -6,7 +6,7 @@ class Search {
     get searchResults() { return $$('h5[data-test="product-name"]'); }
 
     async goToHomePage() {
-        await $('[data-test="nav-home]').click();
+        await $('[data-test="nav-home"]').click();
         await expect(browser).toHaveUrl('https://practicesoftwaretesting.com/')
     }
 
