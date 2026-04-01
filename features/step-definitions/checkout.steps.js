@@ -1,20 +1,22 @@
 const { Given, When, Then } = require("@wdio/cucumber-framework");
 const Checkout = require("../pageobjects/checkout.page");
 const Login = require("../pageobjects/login.page");
+const productDetailsPage = require("../pageobjects/product-details.page");
 
 Given("the user is in the cart", async () => {
-    await Checkout.open();
+    await Login.login("customer2@practicesoftwaretesting.com", "welcome01");
+    await productDetailsPage.goToHomePage();
+    await productDetailsPage.clickProduct();
+    await productDetailsPage.clickCartButton();
+    await Checkout.goToCheckout();
 });
 
 When("the user clicks on the 'Proceed to checkout'", async () => {
     await Checkout.clickProceed();
 });
 
-When("signs in again to proceed", async () => {
-    await Checkout.login({
-        email: "test@mail.com",
-        password: "25112025*Epam"
-    });
+When("click again to proceed", async () => {
+    await Checkout.clickProceed2();
 });
 
 When("enters the billing address details", async () => {
@@ -24,7 +26,7 @@ When("enters the billing address details", async () => {
         state: "Marmara",
         country: "Turkey",
         postalCode: "34000"
-    }
+    };
     await Checkout.address(userData);
 });
 
@@ -34,13 +36,13 @@ When("clicks again 'Proceed to checkout' button", async () => {
 });
 
 When("selects a payment option under 'Choose your payment method' section", async () => {
-    await Checkout.paymentSelection({ paymentOption: 'Kredi Kartı' });
+    await Checkout.paymentSelection({ paymentOption: 'credit-card' });
 });
 
 When("enters valid information for payment", async () => {
     const cardData = {
-        creditCardNumber: '4111 1111 1111 1111',
-        expiration: '12/30',
+        creditCardNumber: '4111-1111-1111-1111',
+        expiration: '12/2030',
         CVV: '123',
         cardHolderName: 'John Doe'
     };
@@ -53,4 +55,4 @@ When("clicks on the 'Confirm' button", async () => {
 
 Then("a confirmation message should be displayed on the screen as a 'Payment was successful'", async () => {
     await Checkout.successMessage();
-})
+});
