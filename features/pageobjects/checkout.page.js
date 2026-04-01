@@ -1,10 +1,7 @@
 const Page = require("./page");
+const { expect, browser } = require("@wdio/globals");
 
 class Checkout extends Page {
-    get proceedBtn() { return $('[data-test="proceed-1"]'); }
-    get emailInput() { return $('[data-test="email"]'); }
-    get passwordInput() { return $('[data-test="password"]'); }
-    get submitButton() { return $('[data-test="login-submit"]'); }
     get streetInput() { return $('[data-test="street"]'); }
     get cityInput() { return $('[data-test="city"]'); }
     get stateInput() { return $('[data-test="state"]'); }
@@ -16,25 +13,28 @@ class Checkout extends Page {
     get expirationDate() { return $('[data-test="expiration_date"]'); }
     get cvv() { return $('[data-test="cvv"]'); }
     get holderName() { return $('[data-test="card_holder_name"]'); }
-    get finishPayment() { return $('[data-test="finish"]'); }
+    get finishPayment() { return $('button[data-test="finish"]'); }
     get paymentSuccess() { return $('[data-test="payment-success-message"]'); }
 
-    async open() {
-        return super.open('checkout');
+    async goToCheckout() {
+        const cartButton = await $('.nav-item a[data-test="nav-cart"]');
+        await cartButton.click();
+        await browser.url("https://practicesoftwaretesting.com/checkout");
     }
 
     async clickProceed() {
-        await this.proceedBtn.click();
+        const proceedButton = await $('button.btn.btn-success');
+        await proceedButton.waitForExist();
+        await proceedButton.click();
     }
 
-    async login({ email, password }) {
-        await browser.url("https://practicesoftwaretesting.com/checkout");
-        await this.emailInput.setValue(email);
-        await this.passwordInput.setValue(password);
-        await this.submitButton.click();
+    async clickProceed2() {
+        const proceedButton = await $('button[data-test="proceed-2"]');
+        await proceedButton.waitForExist();
+        await proceedButton.click();
     }
 
-    async address({ street, postalCode, city, state, country }) {
+    async address({ street, city, state, country, postalCode }) {
         await this.streetInput.setValue(street);
         await this.cityInput.setValue(city);
         await this.stateInput.setValue(state);
@@ -47,7 +47,7 @@ class Checkout extends Page {
     }
 
     async paymentSelection({ paymentOption }) {
-        await this.paymentSelect.selectByVisibleText(paymentOption);
+        await this.paymentSelect.selectByAttribute('value', 'credit-card');
     }
 
     async creditCardInfo({ creditCardNumber, expiration, CVV, cardHolderName }) {
