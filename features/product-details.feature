@@ -1,4 +1,5 @@
 Feature: Add Product to the Basket
+
 Scenario: User adds a product to the basket from product detail page
   Given the user is on the product details page
   When the user clicks on the 'Add to cart' button
