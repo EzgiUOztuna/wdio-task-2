@@ -6,10 +6,10 @@ Given('the user has existing account', async () => {
     await Login.open();
 });
 
-When('the user enters the email and password incorrectly', async () => {
+When("the user enters the email and password incorrectly", async () => {
     const userData = {
         email: `wrong@mail.com`,
-        password: "WrongPass123!"
+        password: "WrongPass123"
     }
     await Login.fillData(userData);
 });
@@ -18,7 +18,7 @@ When("clicks on the 'Login' button", async () => {
     await Login.submit();
 });
 
-Then("an error message should be displayed saying 'Invalid email or password'", async () => {
+Then("an error message should be displayed", async () => {
     await Login.loginError();
 });
 
