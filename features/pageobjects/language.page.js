@@ -1,13 +1,8 @@
 class Language {
     get selectLanguage() { return $('[data-test="language-select"]'); }
     get trLang() { return $('[data-test="lang-tr"]'); }
-    getHome() { return $('[data-test="nav-home"]'); }
-    getCategories() { return $('[data-test="nav-categories"]'); }
-
-
-    async open() {
-        await browser.url('https://practicesoftwaretesting.com/');
-    }
+    get getHome() { return $('[data-test="nav-home"]'); }
+    get getCategories() { return $('[data-test="nav-categories"]'); }
 
     async openDropdown() {
         await this.selectLanguage.waitForDisplayed();
