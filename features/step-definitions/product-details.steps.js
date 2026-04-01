@@ -1,11 +1,12 @@
-const { Given, When, Then, Before } = require("@wdio/cucumber-framework");
+const { Given, When, Then } = require("@wdio/cucumber-framework");
 const Login = require("../pageobjects/login.page");
-const { browser, expect } = require("@wdio/globals");
-const productDetailsPage = require("../pageobjects/product-details.page");
+const ProductDetails = require("../pageobjects/product-details.page");
+console.log("STEP FILE LOADED");
 
 Given("the user is on the product details page", async () => {
-    await Login.login("customer2@practicesoftwaretesting.com", "welcome01");
-    await productDetailsPage.goToHomePage();
+    console.log("STEP WORKED");
+    await Login.login("customer3@practicesoftwaretesting.com", "pass123");
+    await ProductDetails.goToHomePage();
 });
 
 /*
