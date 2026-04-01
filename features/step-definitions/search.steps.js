@@ -1,8 +1,10 @@
 const { Given, When, Then } = require("@wdio/cucumber-framework");
 const Search = require("../pageobjects/search.page");
+const loginPage = require("../pageobjects/login.page");
 
 Given("the user is on the home page", async () => {
-    await Search.open();
+    await loginPage.login("customer2@practicesoftwaretesting.com", "welcome01");
+    await Search.goToHomePage();
 });
 
 When("the user clicks on the Search bar", async () => {
