@@ -15,13 +15,6 @@ class UserProfile extends Page {
     get passwordInput() { return $('[data-test="password"]'); }
     get submitButton() { return $('[data-test="login-submit"]'); }
 
-    async login({ email, password }) {
-        await browser.url("https://practicesoftwaretesting.com/auth/login");
-        await this.emailInput.setValue(email);
-        await this.passwordInput.setValue(password);
-        await this.submitButton.click();
-    }
-
     async profilePage() {
         await this.profileButton.waitForDisplayed();
         await this.profileButton.waitForClickable();
@@ -30,16 +23,51 @@ class UserProfile extends Page {
 
     async navigateProfilePage() {
         await browser.url("https://practicesoftwaretesting.com/account/profile")
+
+    }
+
+    async waitForStableValue(element) {
+        await element.waitForDisplayed();
+
+        let previousValue;
+
+        await browser.waitUntil(
+            async () => {
+                const currentValue = await element.getValue();
+                const isStable = currentValue === previousValue;
+                previousValue = currentValue;
+
+                return isStable;
+            },
+            {
+                timeout: 5000,
+                interval: 300,
+                timeoutMsg: 'Element value did not stabilize'
+            }
+        );
+    }
+
+    async waitForFormReady() {
+        const inputs = [
+            this.phoneInput,
+            this.streetInput,
+            this.postalCodeInput,
+            this.cityInput,
+            this.stateInput
+        ];
+
+        for (const input of inputs) {
+            await this.waitForStableValue(input);
+        }
     }
 
     async change({ phoneNumber, street, postalCode, city, state, country }) {
-        await this.phoneInput.waitForDisplayed();
+        await this.waitForFormReady();
         await this.phoneInput.setValue(phoneNumber);
         await this.streetInput.setValue(street);
         await this.postalCodeInput.setValue(postalCode);
         await this.cityInput.setValue(city);
         await this.stateInput.setValue(state);
-        await this.countrySelect.setValue(country);
     }
 
     async updateProfileSubmit() {
