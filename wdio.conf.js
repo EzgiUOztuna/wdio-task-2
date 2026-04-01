@@ -44,7 +44,7 @@ exports.config = {
     // from the same test should run tests.
     //
     maxInstances: 2,
-    specFileRetries: 2,
+    specFileRetries: 0, //📍2
     specFileRetriesDelay: 0,
     specFileRetriesDeferred: false,
     //
@@ -56,7 +56,7 @@ exports.config = {
         maxInstances: 2,
         browserName: 'chrome',
         'goog:chromeOptions': {
-            args: ['headless', 'disable-gpu']
+            args: ['disable-gpu'] //'-headless'
         }
     }],
 
