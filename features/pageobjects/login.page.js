@@ -16,6 +16,13 @@ class Login extends Page {
         await this.passwordInput.setValue(password);
     }
 
+    async login(email, password) {
+        await this.open();
+        await this.fillData({ email, password });
+        await this.submit();
+        await expect(browser).toHaveUrl('https://practicesoftwaretesting.com/account');
+    }
+
     async submit() {
         await this.submitButton.click();
     }
