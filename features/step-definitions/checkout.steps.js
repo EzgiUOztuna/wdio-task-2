@@ -4,7 +4,7 @@ const Login = require("../pageobjects/login.page");
 const productDetailsPage = require("../pageobjects/product-details.page");
 
 Given("the user is in the cart", async () => {
-    await Login.login("customer2@practicesoftwaretesting.com", "welcome01");
+    await Login.login("customer3@practicesoftwaretesting.com", "pass123");
     await productDetailsPage.goToHomePage();
     await productDetailsPage.clickProduct();
     await productDetailsPage.clickCartButton();
