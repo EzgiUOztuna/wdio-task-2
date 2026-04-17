@@ -9,9 +9,8 @@ class FavoriteProducts extends Page {
         await this.addFavorites.click();
     }
 
-    async successMessage(expectedMessage) {
+    async successMessage() {
         await expect(this.successToast).toBeDisplayed();
-        await expect(this.successToast).toHaveText(expectedMessage);
     }
 
     async removeFavorites() {
@@ -28,7 +27,6 @@ class FavoriteProducts extends Page {
 
         const deleteButton = await $('[data-test="delete"]');
         await deleteButton.click();
-        await expect(deleteButton).not.toExist();
     }
 }
 

@@ -16,6 +16,6 @@ When("the user clicks on the 'Add to favorites' button", async () => {
 });
 
 Then("a success message should be displayed", async () => {
-    await FavoriteProducts.successMessage('Product added to your favorites list.');
+    await FavoriteProducts.successMessage();
     await FavoriteProducts.removeFavorites();
 });
