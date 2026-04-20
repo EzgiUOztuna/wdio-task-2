@@ -2,12 +2,13 @@ const Page = require("./page");
 const { expect, browser } = require("@wdio/globals");
 
 class Checkout extends Page {
+    get countryInput() { return $('[data-test="country"]'); }
+    get postalCodeInput() { return $('[data-test="postal_code"]'); }
+    get houseNumberInput() { return $('[data-test="house_number"]'); }
     get streetInput() { return $('[data-test="street"]'); }
     get cityInput() { return $('[data-test="city"]'); }
-    get stateInput() { return $('[data-test="state"]'); }
-    get countrySelect() { return $('[data-test="country"]'); }
-    get postalCodeInput() { return $('[data-test="postal_code"]'); }
-    get proceedBtn3() { return $('[data-test="proceed-3"]'); }
+    get stateInput() { return $('[data-test="state"]'); }    
+    
     get paymentSelect() { return $('[data-test="payment-method"]'); }
     get cardNumber() { return $('[data-test="credit_card_number"]'); }
     get expirationDate() { return $('[data-test="expiration_date"]'); }
@@ -34,16 +35,19 @@ class Checkout extends Page {
         await proceedButton.click();
     }
 
-    async address({ street, city, state, country, postalCode }) {
+    async address({ country, postalCode, houseNumber, street, city, state }) {
+        await this.countryInput.setValue(country);
+        await this.postalCodeInput.setValue(postalCode);
+        await this.houseNumberInput.setValue(houseNumber);
         await this.streetInput.setValue(street);
         await this.cityInput.setValue(city);
         await this.stateInput.setValue(state);
-        await this.countrySelect.setValue(country);
-        await this.postalCodeInput.setValue(postalCode);
     }
 
     async submit3() {
-        await this.proceedBtn3.click();
+        const proceedBtn3 = await $('[data-test="proceed-3"]');
+        await proceedBtn3.waitForExist();
+        await proceedBtn3.click();
     }
 
     async paymentSelection({ paymentOption }) {
