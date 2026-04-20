@@ -6,6 +6,7 @@ class RegistrationPage extends Page {
     get dobInput() { return $('[data-test="dob"]'); }
     get streetInput() { return $('[data-test="street"]'); }
     get postalCodeInput() { return $('[data-test="postal_code"]'); }
+    get houseNumberInput() { return $('[data-test="house_number"]'); }
     get cityInput() { return $('[data-test="city"]'); }
     get stateInput() { return $('[data-test="state"]'); }
     get countrySelect() { return $('[data-test="country"]'); }
@@ -27,9 +28,10 @@ class RegistrationPage extends Page {
         await this.passwordInput.setValue(password);
     }
 
-    async address({ street, postalCode, city, state, country }) {
+    async address({ street, postalCode, city, state, country, houseNumber }) {
         await this.streetInput.setValue(street);
         await this.postalCodeInput.setValue(postalCode);
+        await this.houseNumberInput.setValue(houseNumber);
         await this.cityInput.setValue(city);
         await this.stateInput.setValue(state);
         await this.countrySelect.selectByVisibleText(country);
