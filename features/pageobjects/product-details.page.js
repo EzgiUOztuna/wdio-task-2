@@ -1,4 +1,4 @@
-const { expect, browser } = require("@wdio/globals");
+const { expect, browser, $$ } = require("@wdio/globals");
 const Page = require("./page");
 const loginPage = require("./login.page");
 
@@ -6,7 +6,16 @@ class ProductDetails extends Page {
     //get successToast() { return $('#toast-container'); }
 
     async goToHomePage() {
+        /*console.log('SIZE:', await browser.getWindowSize());
+        await browser.url('/account');
+        await $('body').waitForDisplayed({ timeout: 10000 });
+        await browser.pause(2000); // debug için
+        await browser.saveScreenshot('debug.png');*/
+        await browser.setWindowSize(1440, 900);
+
         const navHome = await $('[data-test="nav-home"]');
+        await navHome.waitForDisplayed({ timeout: 5000 });
+        await navHome.waitForClickable({ timeout: 5000 });
         await navHome.click();
         await expect(browser).toHaveUrl('https://practicesoftwaretesting.com/');
     }
