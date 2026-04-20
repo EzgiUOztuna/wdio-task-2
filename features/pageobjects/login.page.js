@@ -24,6 +24,7 @@ class Login extends Page {
     }
 
     async submit() {
+        await this.submitButton.waitForClickable({timeout: 5000});
         await this.submitButton.click();
     }
 
