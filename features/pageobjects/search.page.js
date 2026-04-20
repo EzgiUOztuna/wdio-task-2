@@ -6,6 +6,7 @@ class Search {
     get searchResults() { return $$('h5[data-test="product-name"]'); }
 
     async goToHomePage() {
+        await browser.setWindowSize(1440, 900);
         await $('[data-test="nav-home"]').click();
         await expect(browser).toHaveUrl('https://practicesoftwaretesting.com/')
     }
