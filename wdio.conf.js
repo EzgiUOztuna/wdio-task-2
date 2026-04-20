@@ -56,7 +56,7 @@ exports.config = {
         maxInstances: 2,
         browserName: 'chrome',
         'goog:chromeOptions': {
-            args: ['disable-gpu'] //'-headless'
+            args: ['-headless', 'disable-gpu'] //'-headless'
         }
     }],
 
@@ -91,7 +91,7 @@ exports.config = {
     // with `/`, the base url gets prepended, not including the path portion of your baseUrl.
     // If your `url` parameter starts without a scheme or `/` (like `some/path`), the base url
     // gets prepended directly.
-    // baseUrl: 'http://localhost:8080',
+    baseUrl: 'https://practicesoftwaretesting.com',
     //
     // Default timeout for all waitFor* commands.
     waitforTimeout: 10000,
