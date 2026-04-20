@@ -13,6 +13,7 @@ When('the user enters valid registration information', async () => {
         birthDate: "1996-03-28",
         street: "Atatürk Caddesi",
         postalCode: "34000",
+        houseNumber: "35",
         city: "Istanbul",
         state: "Marmara",
         country: "Turkey",
