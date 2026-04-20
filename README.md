@@ -1,6 +1,5 @@
 # wdio-task-2
-
-
+Tests are running on desktop -> setWindowSize(1440, 900)
 
 
 ## Getting started
