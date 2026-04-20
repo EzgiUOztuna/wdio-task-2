@@ -6,7 +6,8 @@ class ProductDetails extends Page {
     //get successToast() { return $('#toast-container'); }
 
     async goToHomePage() {
-        await $('[data-test="nav-home"]').click();
+        const navHome = await $('[data-test="nav-home"]');
+        await navHome.click();
         await expect(browser).toHaveUrl('https://practicesoftwaretesting.com/');
     }
 
