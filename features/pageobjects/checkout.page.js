@@ -7,8 +7,8 @@ class Checkout extends Page {
     get houseNumberInput() { return $('[data-test="house_number"]'); }
     get streetInput() { return $('[data-test="street"]'); }
     get cityInput() { return $('[data-test="city"]'); }
-    get stateInput() { return $('[data-test="state"]'); }    
-    
+    get stateInput() { return $('[data-test="state"]'); }
+
     get paymentSelect() { return $('[data-test="payment-method"]'); }
     get cardNumber() { return $('[data-test="credit_card_number"]'); }
     get expirationDate() { return $('[data-test="expiration_date"]'); }
