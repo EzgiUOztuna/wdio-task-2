@@ -21,11 +21,12 @@ When("click again to proceed", async () => {
 
 When("enters the billing address details", async () => {
     const userData = {
-        street: "Atatürk Caddesi",
-        city: "Istanbul",
-        state: "Marmara",
         country: "Turkey",
-        postalCode: "34000"
+        postalCode: "35000",
+        houseNumber: "35",
+        street: "Atatürk Caddesi",
+        city: "Izmir",
+        state: "Ege",      
     };
     await Checkout.address(userData);
 });
