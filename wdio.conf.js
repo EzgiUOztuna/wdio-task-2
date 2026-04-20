@@ -44,7 +44,7 @@ exports.config = {
     // from the same test should run tests.
     //
     maxInstances: 2,
-    specFileRetries: 2,
+    specFileRetries: 1,//2
     specFileRetriesDelay: 0,
     specFileRetriesDeferred: false,
     //
