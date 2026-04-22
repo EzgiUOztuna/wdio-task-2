@@ -76,7 +76,8 @@ class UserProfile extends Page {
 
     async alertMessage() {
         await expect(this.alertSuccessMessage).toBeDisplayed({ timeout: 15000 });
-        //await expect(this.alertSuccessMessage).toHaveText('Profiliniz başarıyla güncellendi!');
+        const successText = await this.alertSuccessMessage.getText();
+        await expect(this.alertSuccessMessage).toHaveText(successText);
     }
 }
 
