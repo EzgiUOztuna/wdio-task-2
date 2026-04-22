@@ -76,8 +76,13 @@ class UserProfile extends Page {
 
     async alertMessage() {
         await expect(this.alertSuccessMessage).toBeDisplayed({ timeout: 15000 });
-        const successText = await this.alertSuccessMessage.getText();
-        await expect(this.alertSuccessMessage).toHaveText(successText);
+
+        const lang = await $('html').getAttribute('lang');
+        if (lang === 'tr') {
+            await expect(this.alertSuccessMessage).toHaveText('Profiliniz başarıyla güncellendi!');
+        } else {
+            await expect(this.alertSuccessMessage).toHaveText('Your profile is successfully updated!');
+        }
     }
 }
 
