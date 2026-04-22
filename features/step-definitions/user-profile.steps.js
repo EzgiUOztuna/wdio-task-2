@@ -4,7 +4,7 @@ const { expect, browser } = require("@wdio/globals");
 const Login = require("../pageobjects/login.page");
 
 Given("the user is logged into their account successfully", async () => {
-    await Login.login("customer2@practicesoftwaretesting.com", "welcome01");
+    await Login.login("customer3@practicesoftwaretesting.com", "pass123");
 });
 
 When("the user clicks on the 'Profile' button", async () => {
